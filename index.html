@@ -40,7 +40,7 @@
 		var infoWindow = new google.maps.InfoWindow();
 		
 		google.maps.event.addListener(userMarker, 'click', function () {
-                var markerContent = "I'm Here";
+                var markerContent = "<b>I'm Here<b>";
                 infoWindow.setContent(markerContent);
                 infoWindow.open(map, this);
         });
