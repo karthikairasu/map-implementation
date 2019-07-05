@@ -37,6 +37,12 @@
 			title: 'Hello World!',
             icon: im
         });
+		var infoWindow = new google.maps.InfoWindow();
+		google.maps.event.addListener(marker, 'click', function () {
+                var markerContent = "I'm Here";
+                infoWindow.setContent(markerContent);
+                infoWindow.open(map, this);
+        });
 		var trafficLayer = new google.maps.TrafficLayer();
         trafficLayer.setMap(map);
       }
