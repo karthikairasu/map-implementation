@@ -29,37 +29,40 @@
         var mapOptions = {
           zoom: 20,
           center: myLatLng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-		  styles:[
-				  {
-					"featureType": "road.arterial",
-					"elementType": "geometry.fill",
-					"stylers": [
-					  {
-						"color": "#f7bc9f"
-					  }
-					]
-				  },
-				  {
-					"featureType": "road.highway",
-					"elementType": "geometry.stroke",
-					"stylers": [
-					  {
-						"color": "#ecf200"
-					  }
-					]
-				  },
-				  {
-					"featureType": "road.local",
-					"elementType": "geometry.fill",
-					"stylers": [
-					  {
-						"color": "#dbdbdb"
-					  }
-					]
-				  }
-				]
+          mapTypeId: google.maps.MapTypeId.ROADMAP
         }
+		var styles = {
+		    default: null,
+           show:[
+		  {
+			"featureType": "road.arterial",
+			"elementType": "geometry.fill",
+			"stylers": [
+			  {
+				"color": "#f7bc9f"
+			  }
+			]
+		  },
+		  {
+			"featureType": "road.highway",
+			"elementType": "geometry.stroke",
+			"stylers": [
+			  {
+				"color": "#ecf200"
+			  }
+			]
+		  },
+		  {
+			"featureType": "road.local",
+			"elementType": "geometry.fill",
+			"stylers": [
+			  {
+				"color": "#ffffff"
+			  }
+			]
+		  }
+		]
+	  };
         var map = new google.maps.Map(document.getElementById('map_canvas'),
                                       mapOptions);
         var userMarker = new google.maps.Marker({
@@ -77,8 +80,9 @@
         });
 		var trafficLayer = new google.maps.TrafficLayer();
         trafficLayer.setMap(map);
+	    
+	  map.setOptions({styles: styles['show']});
       }
-
      function fail(){
          alert('navigator.geolocation failed, may not be supported');
      }
